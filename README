@@ -1,0 +1,48 @@
+PHP bindings for Leptonica library (www.leptonica.com)
+
+Constants:
+
+LEPT_SCALE
+LEPT_SCALE_SMOOTH
+LEPT_SCALE_AREA_MAP
+LEPT_SCALE_BY_SAMPLING
+LEPT_ROTATE_SHEAR
+LEPT_ROTATE_AREA_MAP
+LEPT_BRING_IN_WHITE
+LEPT_BRING_IN_BLACK
+LEPT_JPEG
+LEPT_BMP
+LEPT_PNG
+LEPT_TIFF
+LEPT_TIFF_PACKBITS
+LEPT_TIFF_RLE
+LEPT_TIFF_G3
+LEPT_TIFF_G4
+LEPT_TIFF_LZW
+LEPT_TIFF_ZIP
+LEPT_PNM
+LEPT_PS
+LEPT_GIF
+
+Functions:
+ resource leptonica_open(string file [, bool autorotate ]);
+ resource leptonica_box_create(int x, int y, int width, int height);
+ resource leptonica_scale(resource image, float scalefactorx, float scalefactory [, int mode ]);
+ resource leptonica_rotate(resource image, float angle [, int type [, int incolor [, int width [, int height]]]]);
+ resource leptonica_rotate_orth(resource image, int quads);
+ resource leptonica_clip(resource image, resource box);
+ resource leptonica_unsharpmask(resource image, int smooth, float fract);
+ bool leptonica_save(resource image, string filename[, int format [, bool quality ]]);
+ resource leptonica_clone(resource image);
+ bool leptonica_close(resource image);
+ bool leptonica_box_close(resource box);
+ bool leptonica_comment_set(resource image, string text);
+ string leptonica_comment_get(resource image);
+ array leptonica_pixel_get(resource image, int x, int y);
+ array leptonica_image_info(resource image);
+ resource leptonica_filter_rank(resource image, int width, int height [, double rank ])
+ resource leptonica_to_8bit_gray(resource image);
+ string leptonica_data_get(resource image);
+ int leptonica_color(int red, int blue, int green)
+ resource leptonica_open_from_string(string data[, zend_bool autorotate)
+ string leptonica_save_to_string(resource image[, int format [, int quality ]])
