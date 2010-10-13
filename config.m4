@@ -10,7 +10,7 @@ if test "$PHP_LEPTONICA" != "no"; then
   fi
 
   SEARCH_PATH="/usr/local /usr /local"
-  SEARCH_FOR="/include/allheaders.h"
+  SEARCH_FOR="/include/liblept/allheaders.h"
   if test -r $PHP_LEPTONICA/; then
     LEPTONICA_DIR=$PHP_LEPTONICA
   else
