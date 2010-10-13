@@ -153,7 +153,7 @@ if test "$PHP_LEPTONICA" != "no"; then
   ],[
     AC_MSG_ERROR([wrong Leptonica version (1.52+ is required) or Leptonica library not found])
   ],[
-    -L$LEPTONICA_DIR/$PHP_LIBDIR -lm -L$LEPTONICA_TIFF_DIR/$PHP_LIBDIR -L$LEPTONICA_JPEG_DIR/$PHP_LIBDIR -    L$LEPTONICA_PNG_DIR/$PHP_LIBDIR -lm -ldl -ljpeg -lpng -ltiff
+    -L$LEPTONICA_DIR/$PHP_LIBDIR -lm -L$LEPTONICA_TIFF_DIR/$PHP_LIBDIR -L$LEPTONICA_JPEG_DIR/$PHP_LIBDIR -L$LEPTONICA_PNG_DIR/$PHP_LIBDIR -ljpeg -lpng -ltiff
   ])
   
   PHP_SUBST(LEPTONICA_SHARED_LIBADD)
