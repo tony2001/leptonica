@@ -29,7 +29,7 @@
 #include "ext/standard/info.h"
 #include "php_leptonica.h"
 
-#include <liblept/allheaders.h>
+#include <allheaders.h>
 
 static int le_leptonica_pix;
 static int le_leptonica_box;
