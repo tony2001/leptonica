@@ -119,15 +119,31 @@ if test "$PHP_LEPTONICA" != "no"; then
   fi
 
   SEARCH_PATH="/usr/local /usr /local"
-  SEARCH_FOR="/include/liblept/allheaders.h"
+  SEARCH_FOR="allheaders.h"
   if test -r $PHP_LEPTONICA/; then
-    LEPTONICA_DIR=$PHP_LEPTONICA
+    AC_MSG_CHECKING([for Leptonica files in $PHP_LEPTONICA])
+    if test -r $PHP_LEPTONICA/include/liblept/$SEARCH_FOR; then
+      LEPTONICA_DIR=$PHP_LEPTONICA
+      LEPTONICA_INCDIR=$PHP_LEPTONICA/include/liblept
+      AC_MSG_RESULT(found)
+    elif test -r $PHP_LEPTONICA/include/leptonica/$SEARCH_FOR; then
+      LEPTONICA_DIR=$PHP_LEPTONICA
+      LEPTONICA_INCDIR=$PHP_LEPTONICA/include/leptonica
+      AC_MSG_RESULT(found)
+    fi
   else
     AC_MSG_CHECKING([for Leptonica files in default path])
     for i in $SEARCH_PATH ; do
-      if test -r $i/$SEARCH_FOR; then
+      if test -r $i/include/liblept/$SEARCH_FOR; then
         LEPTONICA_DIR=$i
+        LEPTONICA_INCDIR=$i/include/liblept
         AC_MSG_RESULT(found in $i)
+        break;
+      elif test -r $i/include/leptonica/$SEARCH_FOR; then
+        LEPTONICA_DIR=$i
+        LEPTONICA_INCDIR=$i/include/leptonica
+        AC_MSG_RESULT(found in $i)
+        break;
       fi
     done
   fi
@@ -137,15 +153,15 @@ if test "$PHP_LEPTONICA" != "no"; then
     AC_MSG_ERROR([Please reinstall Leptonica])
   fi
 
-  PHP_ADD_INCLUDE($LEPTONICA_DIR/include)
+  PHP_ADD_INCLUDE($LEPTONICA_INCDIR)
 
   LIBNAME=lept
   LIBSYMBOL=pixGetRGBPixel
 
-  PHP_LEPTONICA_ZLIB
-  PHP_LEPTONICA_JPEG
-  PHP_LEPTONICA_PNG
-  PHP_LEPTONICA_TIFF
+  dnl PHP_LEPTONICA_ZLIB
+  dnl PHP_LEPTONICA_JPEG
+  dnl PHP_LEPTONICA_PNG
+  dnl PHP_LEPTONICA_TIFF
 
   PHP_CHECK_LIBRARY($LIBNAME,$LIBSYMBOL,
   [
